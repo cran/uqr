@@ -1,0 +1,11 @@
+245fadf2e85be0245b74c7bc84d463bd *DESCRIPTION
+fa29a58a65859ad5953d644deb6b7819 *NAMESPACE
+05811d56576c5db60c2a1ed898e7788f *R/engel.R
+c36e02ac88a7264bdf481731c8d933eb *R/urq.R
+53d1cc58de7604b3603e3bc6ebecde80 *R/urqCI.R
+0da5e41bb148ee8d51324c37c57a5765 *R/urqb.R
+2cb41ec2ee5de9777a3577f2e441e17c *data/engel.rda
+c8b6bbd3098f11a999aa85ec1f93a8b3 *man/Engel-Data.Rd
+5abde58b4881e1465c891ff745b57d28 *man/urq.Rd
+42f92ba60d60749b8f8ce2f6698b7e55 *man/urqCI.Rd
+8814ca35adf7e8dd8a6f4fcf5acb2853 *man/urqb.Rd
