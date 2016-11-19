@@ -2,14 +2,12 @@
 % Please edit documentation in R/urqCI.R
 \name{urqCI}
 \alias{urqCI}
-\title{Unconditional Quantile Regression}
+\title{Inference for Unconditional Quantile Regression}
 \usage{
-urqCI(urq,data,R=20,seed=NULL,colour=NULL,confidence=NULL,graph=TRUE,cluster=NULL)
+urqCI(urq,R=20,seed=NULL,colour=NULL,confidence=NULL,graph=TRUE,cluster=NULL)
 }
 \arguments{
 \item{urq}{an object of class \code{urq}.}
-
-\item{data}{a \code{dataframe} in which to interpret the variables named in the \code{formula} .}
 
 \item{R}{the number of bootstrap replications to be used.}
 
@@ -29,13 +27,23 @@ Returns a summary list for an Unconditional Quantile Regression Fit.
 \details{
 This function provides standard errors and confidence intervals for the Recentered Influence Function regression fit \code{urq}. If the cluster option is used, standard errors are cluster robust according to the variable supplied by the user, otherwise observations are assumed to be iid. 
 Inference is obtained though a bayesian bootstrap drawing observation (or cluster) weights from a Dirichlet distribution. 
-If the option graph is TRUE, then a quantile plot is provided showing estimates and confidence intervals (t approximation [polygon] and percentile bootstrap [dashed lines]).
+If the option graph is TRUE, then a quantile plot is provided showing estimates and confidence intervals (t approximation).
 }
 \examples{
+### example for cross-sectional data ###
+
 data(engel)
 formula=foodexp ~ income
 rifreg=urq(formula=formula,data=engel)
-summary=urqCI(urq = rifreg,data = engel,R = 100,graph = TRUE,seed = 1234)
+summary=urqCI(urq = rifreg,R = 100,graph = TRUE,seed = 1234)
+
+### example for panel data ###
+
+data(trust)
+formula=Trust_in_the_ECB~Trust_in_the_EU+Trust_in_National_Government
+cre=~Trust_in_the_EU+Trust_in_National_Government
+rif=urq(formula,data=trust,cre=cre,id="countryname")
+summary=urqCI(urq = rif,R = 100,graph = TRUE,seed = 1234,cluster="countryname")
 }
 \references{
 Rubin, D. B. (1981). The bayesian bootstrap. The annals of statistics, 9(1), 130-134.

@@ -2,6 +2,7 @@
 
 export(urq)
 export(urqCI)
+export(urqb)
 import(Hmisc)
 import(grDevices)
 import(graphics)

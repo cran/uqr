@@ -4,7 +4,7 @@
 \alias{urqb}
 \title{Unconditional Quantile Regression}
 \usage{
-urqb(data,tau=NULL,formula,kernel=NULL,cluster=cluster,wts=wts)
+urqb(data,tau,formula,kernel=NULL,cluster=cluster)
 }
 \arguments{
 \item{data}{a data.frame in which to interpret the variables named in the formula}
@@ -16,8 +16,6 @@ urqb(data,tau=NULL,formula,kernel=NULL,cluster=cluster,wts=wts)
 \item{kernel}{a character string giving the smoothing kernel to be used. This must match one of "gaussian", "rectangular", "triangular", "epanechnikov", "biweight", "cosine" or "optcosine", with default "gaussian".}
 
 \item{cluster}{column name of variable to be used in order to obtain cluster robust standard errors.}
-
-\item{wts}{weights}
 }
 \description{
 Function Not intended for user. Returns an object of class "urq" that represents an Unconditional Quantile Regression Fit.
@@ -28,5 +26,4 @@ NULL
 \seealso{
 \code{\link{density},\link{urq}}
 }
-\keyword{internal}
 

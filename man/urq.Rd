@@ -4,7 +4,7 @@
 \alias{urq}
 \title{Unconditional Quantile Regression}
 \usage{
-urq(formula,data,tau=NULL,kernel=NULL)
+urq(formula,data,tau=NULL,kernel=NULL,cre=NULL,id=NULL)
 }
 \arguments{
 \item{formula}{a formula object, with the response on the left of a ~ operator, and the terms, separated by + operators, on the right.}
@@ -14,20 +14,41 @@ urq(formula,data,tau=NULL,kernel=NULL)
 \item{tau}{the quantile(s) to be estimated, this must be a number (or a vector of numbers) strictly between 0 and 1.}
 
 \item{kernel}{a character string giving the smoothing kernel to be used. This must match one of "gaussian", "rectangular", "triangular", "epanechnikov", "biweight", "cosine" or "optcosine", with default "gaussian".}
+
+\item{cre}{The CRE formula (right hand side only) is a specification of the variables in the CRE component. These are possibly endogenous variables (in the sense that they are affected by the fixed effects) and must be time-varying. If left empty, a cross-sectional analysis is performed.}
+
+\item{id}{defines the structure of the panel.}
 }
 \description{
 Returns an object of class \code{urq}. that represents an Unconditional Quantile Regression Fit
 }
 \details{
-This function returns a Recentered Influence Function regression of given quantiles as proposed by Firpo, S., Fortin, N. M., & Lemieux, T. (2009).
+This function returns a Recentered Influence Function regression of given quantiles as proposed by Firpo, S., Fortin, N. M., & Lemieux, T. (2009). Panel data analysis is performed extending the correlated random effects (CRE)  model by Mundlak (1978) and Chamberlain (1984) to an unconditional quantile regression framework. See Abrevaya and Dahl (2008) and by Bache et al (2011) for more details.
 }
 \examples{
+### example for cross-sectional data ###
+
 data(engel)
 formula = foodexp ~ income
 rifreg=urq(formula,data = engel)
+
+### example for panel data ###
+
+data(trust)
+formula=Trust_in_the_ECB~Trust_in_the_EU+Trust_in_National_Government
+cre=~Trust_in_the_EU+Trust_in_National_Government
+rif=urq(formula,data=trust,cre=cre,id="countryname")
 }
 \references{
 Firpo, S., Fortin, N. M., & Lemieux, T. (2009). Unconditional quantile regressions. Econometrica, 77(3), 953-973.
+
+Mundlak, Y. 1978. On the pooling of time series and cross section data. Econometrica 46: 69-85.
+
+Chamberlain G (1984) Panel Data. In: Griliches Z, Intriligator MD (eds) Handbook of Econometrics, vol 2, Elsevier Science B. V., pp 1247-1318
+
+Abrevaya, Jason and Christian M. Dahl. 2008. The effects of birth inputs on birthweight. Jounal of Business and Economic Statistics. 26-4. Pages 379-397.
+
+Bache, Stefan Holst; Christian M. Dahl; Johannes Tang Kristensen. 2011. Headlights on tobacco road to low birthweight - Evidence from a battery of quantile regression estimators and a heterogeneous panel.
 }
 \seealso{
 \code{\link{density},\link[uqr]{urqCI}}
