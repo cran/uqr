@@ -23,7 +23,7 @@ urq(formula,data,tau=NULL,kernel=NULL,cre=NULL,id=NULL)
 Returns an object of class \code{urq}. that represents an Unconditional Quantile Regression Fit
 }
 \details{
-This function returns a Recentered Influence Function regression of given quantiles as proposed by Firpo, S., Fortin, N. M., & Lemieux, T. (2009). Panel data analysis is performed extending the correlated random effects (CRE)  model by Mundlak (1978) and Chamberlain (1984) to an unconditional quantile regression framework. See Abrevaya and Dahl (2008) and by Bache et al (2011) for more details.
+This function returns a Recentered Influence Function regression of given quantiles as proposed by Firpo, S., Fortin, N. M., & Lemieux, T. (2009). Panel data analysis is performed extending the correlated random effects (CRE)  model by Mundlak (1978) and Chamberlain (1984) to an unconditional quantile regression framework. See Abrevaya and Dahl (2008) and Bache et al (2011) for more details.
 }
 \examples{
 ### example for cross-sectional data ###
@@ -53,4 +53,3 @@ Bache, Stefan Holst; Christian M. Dahl; Johannes Tang Kristensen. 2011. Headligh
 \seealso{
 \code{\link{density},\link[uqr]{urqCI}}
 }
-

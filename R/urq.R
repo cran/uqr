@@ -8,7 +8,7 @@
 #'@param kernel a character string giving the smoothing kernel to be used. This must match one of "gaussian", "rectangular", "triangular", "epanechnikov", "biweight", "cosine" or "optcosine", with default "gaussian".
 #'@param cre The CRE formula (right hand side only) is a specification of the variables in the CRE component. These are possibly endogenous variables (in the sense that they are affected by the fixed effects) and must be time-varying. If left empty, a cross-sectional analysis is performed.
 #'@param id defines the structure of the panel.
-#'@details This function returns a Recentered Influence Function regression of given quantiles as proposed by Firpo, S., Fortin, N. M., & Lemieux, T. (2009). Panel data analysis is performed extending the correlated random effects (CRE)  model by Mundlak (1978) and Chamberlain (1984) to an unconditional quantile regression framework. See Abrevaya and Dahl (2008) and by Bache et al (2011) for more details.
+#'@details This function returns a Recentered Influence Function regression of given quantiles as proposed by Firpo, S., Fortin, N. M., & Lemieux, T. (2009). Panel data analysis is performed extending the correlated random effects (CRE)  model by Mundlak (1978) and Chamberlain (1984) to an unconditional quantile regression framework. See Abrevaya and Dahl (2008) and Bache et al (2011) for more details.
 #'@export 
 #'@import
 #'stats

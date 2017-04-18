@@ -4,7 +4,7 @@
 \alias{urqCI}
 \title{Inference for Unconditional Quantile Regression}
 \usage{
-urqCI(urq,R=20,seed=NULL,colour=NULL,confidence=NULL,graph=TRUE,cluster=NULL)
+urqCI(urq,R=20,seed=NULL,colour=NULL,confidence=NULL,graph=TRUE,cluster=NULL,BC=FALSE)
 }
 \arguments{
 \item{urq}{an object of class \code{urq}.}
@@ -17,9 +17,11 @@ urqCI(urq,R=20,seed=NULL,colour=NULL,confidence=NULL,graph=TRUE,cluster=NULL)
 
 \item{confidence}{significance level.}
 
-\item{graph}{boolean, if \code{TRUE} a graph is displayed. At least two quantiles are needed for plot to work.}
+\item{graph}{boolean, if \code{TRUE} a graph is produced. At least two quantiles are needed for plot to work.}
 
 \item{cluster}{column name of variable to be used in order to obtain cluster robust standard errors and confidence intervals.}
+
+\item{BC}{plot option: If set to \code{TRUE}, Bias-Corrected Bootstrap confidence bands are plotted (black dashed lines), along with the bootstrap median (orange dashed line).}
 }
 \description{
 Returns a summary list for an Unconditional Quantile Regression Fit.
@@ -27,7 +29,7 @@ Returns a summary list for an Unconditional Quantile Regression Fit.
 \details{
 This function provides standard errors and confidence intervals for the Recentered Influence Function regression fit \code{urq}. If the cluster option is used, standard errors are cluster robust according to the variable supplied by the user, otherwise observations are assumed to be iid. 
 Inference is obtained though a bayesian bootstrap drawing observation (or cluster) weights from a Dirichlet distribution. 
-If the option graph is TRUE, then a quantile plot is provided showing estimates and confidence intervals (t approximation).
+If the option graph is TRUE, then a quantile plot is provided showing estimates and confidence intervals (t approximation) or Bias-Corrected (BC) intervals. Confidence intervals using the BC percentile method typically require 1000 or more replications.
 }
 \examples{
 ### example for cross-sectional data ###
@@ -35,7 +37,7 @@ If the option graph is TRUE, then a quantile plot is provided showing estimates 
 data(engel)
 formula=foodexp ~ income
 rifreg=urq(formula=formula,data=engel)
-summary=urqCI(urq = rifreg,R = 100,graph = TRUE,seed = 1234)
+summary=urqCI(urq = rifreg,R = 10,graph = TRUE,seed = 1234)
 
 ### example for panel data ###
 
@@ -43,12 +45,13 @@ data(trust)
 formula=Trust_in_the_ECB~Trust_in_the_EU+Trust_in_National_Government
 cre=~Trust_in_the_EU+Trust_in_National_Government
 rif=urq(formula,data=trust,cre=cre,id="countryname")
-summary=urqCI(urq = rif,R = 100,graph = TRUE,seed = 1234,cluster="countryname")
+summary=urqCI(urq = rif,R = 10,graph = TRUE,seed = 1234,cluster="countryname")
 }
 \references{
 Rubin, D. B. (1981). The bayesian bootstrap. The annals of statistics, 9(1), 130-134.
+
+Efron, B. and R. J. Tibshirani. Bootstrap methods for standard errors, confidence intervals, and other measures of statistical accuracy. Statistical science (1986): 54-75.
 }
 \seealso{
 \code{\link{urq}}
 }
-

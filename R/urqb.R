@@ -28,8 +28,8 @@ urqb <- function(data=data,tau=tau,formula=formula,kernel=NULL,cluster=cluster) 
     data2=data
     
     
-    wtd.quantile(data2[,1],tau,weights=data$wts,normwt=TRUE)->q
-    density(data[,1],kernel=kernel,weights=data$wts)->f
+    wtd.quantile(data2[,idx.dep],tau,weights=data$wts,normwt=TRUE)->q
+    density(data[,idx.dep],kernel=kernel,weights=data$wts)->f
     approx(f$x, f$y, q)$y->fq
     RIF=q[i]+((tau[i]-indicator(data2[,idx.dep]<q[i]))/fq[i])
     

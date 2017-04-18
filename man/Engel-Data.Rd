@@ -20,4 +20,3 @@ Engel food expenditure data used in Koenker and Bassett(1982). This is a regress
 Koenker, R. and Bassett, G (1982) Robust Tests of Heteroscedasticity based on Regression Quantiles; Econometrica 50, 43-61.
 }
 \keyword{datasets}
-

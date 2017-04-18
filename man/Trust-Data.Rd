@@ -19,4 +19,3 @@ data(trust)
 Data on 12 European Countries
 }
 \keyword{datasets}
-

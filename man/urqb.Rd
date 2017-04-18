@@ -26,4 +26,3 @@ NULL
 \seealso{
 \code{\link{density},\link{urq}}
 }
-
